@@ -4,6 +4,7 @@ import { FaTrashAlt } from "react-icons/fa";
 import { BsSuitHeartFill } from "react-icons/bs";
 import SelectedItem from "./components/SelectedItem";
 import DarkMode from "./components/DarkMode";
+import { styled } from "styled-components";
 
 export default function App() {
   const [todos, setTodos] = useState([
@@ -59,27 +60,13 @@ export default function App() {
           return (
             <div key={todo.id}>
               <span key={todo.id}>{todo.content}</span>
-              <button
-                style={{
-                  background: "transparent",
-                  border: "none",
-                  padding: "5px",
-                }}
-                onClick={() => onClickDeleteBtnHandler(todo.id)}
-              >
+              <DeleteBtn onClick={() => onClickDeleteBtnHandler(todo.id)}>
                 <FaTrashAlt />
-              </button>
+              </DeleteBtn>
               {/* 좋아요 버튼 */}
-              <button
-                style={{
-                  background: "transparent",
-                  border: "none",
-                  padding: "0px",
-                }}
-                onClick={() => onClickLikesBtnHandler(todo.id)}
-              >
+              <LikesBtn onClick={() => onClickLikesBtnHandler(todo.id)}>
                 <BsSuitHeartFill /> <span>{todo.isLiked}</span>
-              </button>
+              </LikesBtn>
             </div>
           );
         })}
@@ -89,3 +76,14 @@ export default function App() {
     </>
   );
 }
+
+const DeleteBtn = styled.button`
+  background: transparent;
+  border: none;
+  padding: 5px;
+`;
+
+const LikesBtn = styled.button`
+  background: transparent;
+  border: none;
+`;

@@ -11,12 +11,12 @@ export default function App() {
     {
       id: nanoid(),
       content: "리액트 공부하기",
-      isLiked: 0,
+      likeCount: 0,
     },
     {
       id: nanoid(),
       content: "아침 운동하기",
-      isLiked: 0,
+      likeCount: 0,
     },
   ]);
   const [content, setContent] = useState("");
@@ -28,7 +28,7 @@ export default function App() {
       {
         id: nanoid(),
         content,
-        isLiked: 0,
+        likeCount: 0,
       },
     ]);
     setContent("");
@@ -41,7 +41,7 @@ export default function App() {
   const onClickLikesBtnHandler = (id) => {
     setTodos(
       todos.map((todo) =>
-        todo.id === id ? { ...todo, isLiked: todo.isLiked + 1 } : todo
+        todo.id === id ? { ...todo, likeCount: todo.likeCount + 1 } : todo
       )
     );
   };
@@ -65,7 +65,7 @@ export default function App() {
               </DeleteBtn>
               {/* 좋아요 버튼 */}
               <LikesBtn onClick={() => onClickLikesBtnHandler(todo.id)}>
-                <BsSuitHeartFill /> <span>{todo.isLiked}</span>
+                <BsSuitHeartFill /> <span>{todo.likeCount}</span>
               </LikesBtn>
             </div>
           );
